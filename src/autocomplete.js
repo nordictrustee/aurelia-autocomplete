@@ -18,6 +18,7 @@ export class Autocomplete {
   @bindable delay = 300;
   @bindable small = false;
   @bindable horizontal = false;
+  @bindable isAutoComplete = true;
   @observable inputValue = '';
 
   id = nextID++;
@@ -92,7 +93,7 @@ export class Autocomplete {
       .then(suggestions => {
         this.index = -1;
         this.suggestions.splice(0, this.suggestions.length, ...suggestions);
-        if (suggestions.length === 1) {
+        if (suggestions.length === 1 && this.isAutoComplete) {
           this.select(suggestions[0]);
         } else if (suggestions.length === 0) {
           this.collapse();

@@ -3,7 +3,7 @@
 System.register(['aurelia-binding', 'aurelia-templating', 'aurelia-templating-resources', 'aurelia-dependency-injection', 'aurelia-pal', 'aurelia-task-queue', './autocompleteoptions'], function (_export, _context) {
   "use strict";
 
-  var bindingMode, observable, BindingEngine, bindable, InlineViewStrategy, Focus, inject, Optional, DOM, TaskQueue, autoCompleteOptions, _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, nextID, Autocomplete;
+  var bindingMode, observable, BindingEngine, bindable, InlineViewStrategy, Focus, inject, Optional, DOM, TaskQueue, autoCompleteOptions, _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, nextID, Autocomplete;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -97,7 +97,9 @@ System.register(['aurelia-binding', 'aurelia-templating', 'aurelia-templating-re
 
           _initDefineProp(this, 'horizontal', _descriptor8, this);
 
-          _initDefineProp(this, 'inputValue', _descriptor9, this);
+          _initDefineProp(this, 'isAutoComplete', _descriptor9, this);
+
+          _initDefineProp(this, 'inputValue', _descriptor10, this);
 
           this.id = nextID++;
           this.expanded = false;
@@ -172,7 +174,7 @@ System.register(['aurelia-binding', 'aurelia-templating', 'aurelia-templating-re
 
             _this.index = -1;
             (_suggestions = _this.suggestions).splice.apply(_suggestions, [0, _this.suggestions.length].concat(suggestions));
-            if (suggestions.length === 1) {
+            if (suggestions.length === 1 && _this.isAutoComplete) {
               _this.select(suggestions[0]);
             } else if (suggestions.length === 0) {
               _this.collapse();
@@ -300,7 +302,12 @@ System.register(['aurelia-binding', 'aurelia-templating', 'aurelia-templating-re
         initializer: function initializer() {
           return false;
         }
-      }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'inputValue', [observable], {
+      }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'isAutoComplete', [bindable], {
+        enumerable: true,
+        initializer: function initializer() {
+          return true;
+        }
+      }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'inputValue', [observable], {
         enumerable: true,
         initializer: function initializer() {
           return '';
